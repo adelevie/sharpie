@@ -100,7 +100,7 @@ Sinatra routes make web app and API creation dead-simple. The syntax is straight
 
 ### Why not Jekyll?
 
-Jekyll is great for blogs and other types of sites where content is "hand created." That is, a human creates a file in a folder and writes some Markdown. Sharpie is more geared towards use-cases where the original content is already in a machine-readable format. For example, if you have a database whose contents you want to expose via REST API. You also don't want to maintain a server and you don't want to worry about scaline. With Sharpie, you can write such an API with very few (yet straightfoward) lines of code.
+Jekyll is great for blogs and other types of sites where content is "hand created." That is, a human creates a file in a folder and writes some Markdown. Sharpie is more geared towards use-cases where the original content is already in a machine-readable format. For example, if you have a database whose contents you want to expose via REST API. You also don't want to maintain a server and you don't want to worry about scaling. With Sharpie, you can write such an API with very few (yet straightfoward) lines of code.
 
 ### Fork
 

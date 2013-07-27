@@ -1,0 +1,7 @@
+require "minitest/autorun"
+require "pry-rescue/minitest"
+require "sharpie"
+require "fileutils"
+require "json"
+require_relative "test_app"
+require_relative "test_sharpie_app"

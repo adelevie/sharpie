@@ -2,7 +2,7 @@
 
 [![Code Climate](https://codeclimate.com/github/adelevie/sharpie.png)](https://codeclimate.com/github/adelevie/sharpie)
 
-[![Build Status](https://travis-ci.org/[YOUR_GITHUB_USERNAME]/[YOUR_PROJECT_NAME].png)](https://travis-ci.org/[adelevie]/[sharpie])
+[![Build Status](https://travis-ci.org/[adelevie]/[sharpie].png)](https://travis-ci.org/[adelevie]/[sharpie])
 
 
 # Sharpie

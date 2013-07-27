@@ -97,7 +97,7 @@ Jekyll is great for blogs and other types of sites where content is "hand create
 
 ### Fork
 
-This software is mostly a fork of the [sinatra-static](https://github.com/paulasmuth/sinatra-static) gem by [Paul Asmuth](https://twitter.com/paulasmuth). Paul's code is very well-written. I'd rather copy and attribute it than re-invent a well-made wheel, and instead focus on building an interface that suits my needs. More specifically, I want Sharpie to be part of a toolchain for rapidly developing static file-backed REST APIs.
+This software is mostly a fork of the [sinatra-static](https://github.com/paulasmuth/sinatra-static) gem by [Paul Asmuth](https://twitter.com/paulasmuth). Paul's code is very well-written. I'd rather copy and attribute it than re-invent a well-made wheel. I'm focusing on building an interface that suits my needs. More specifically, I want Sharpie to be part of a toolchain for rapidly developing static file-backed REST APIs.
 
 # License
 

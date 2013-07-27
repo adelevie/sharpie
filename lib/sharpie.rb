@@ -15,10 +15,6 @@ module Sharpie
     end
   end
 
-  class ColorString < String
-    include Term::ANSIColor
-  end
-
   class Builder
     attr_accessor :app
     include Rack::Test::Methods

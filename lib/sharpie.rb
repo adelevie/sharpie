@@ -50,7 +50,6 @@ module Sharpie
     def get_path(path)
       self.get(path).tap do |resp|      
         unless resp.status == 200
-          binding.pry
           handle_error_non_200!(path)
         end        
       end

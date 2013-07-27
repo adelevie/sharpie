@@ -1,3 +1,7 @@
+[![Gem Version](https://badge.fury.io/rb/sharpie.png)](http://badge.fury.io/rb/sharpie)
+
+[![Code Climate](https://codeclimate.com/github/adelevie/sharpie.png)](https://codeclimate.com/github/adelevie/sharpie)
+
 # Sharpie
 
 Quick and easy static site generation with a familiar API.

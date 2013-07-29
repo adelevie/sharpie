@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640" />
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Sharpie by adelevie</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/adelevie/sharpie">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Sharpie</h1>
+            <h2>Static site generation with a familiar API</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/adelevie/sharpie/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/adelevie/sharpie/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <p><a href="http://badge.fury.io/rb/sharpie"><img src="https://badge.fury.io/rb/sharpie.png" alt="Gem Version"></a></p>
+
+<p><a href="https://codeclimate.com/github/adelevie/sharpie"><img src="https://codeclimate.com/github/adelevie/sharpie.png" alt="Code Climate"></a></p>
+
+<p><a href="https://travis-ci.org/adelevie/sharpie"><img src="https://travis-ci.org/adelevie/sharpie.png" alt="Build Status"></a></p>
+
+<h1>
+<a name="sharpie" class="anchor" href="#sharpie"><span class="octicon octicon-link"></span></a>Sharpie</h1>
+
+<p>Quick and easy static site generation with a familiar API.</p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">App</span> <span class="o">&lt;</span> <span class="ss">Sharpie</span><span class="p">:</span><span class="ss">:Base</span>
+
+  <span class="n">get</span> <span class="s2">"/"</span> <span class="k">do</span>
+    <span class="s2">"Hello, world."</span>
+  <span class="k">end</span>
+
+  <span class="c1"># get posts from ActiveRecord or elsewhere</span>
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">posts</span>
+    <span class="no">Post</span><span class="o">.</span><span class="n">all</span>
+  <span class="k">end</span>
+
+  <span class="n">posts</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
+    <span class="n">get</span> <span class="s2">"/posts/</span><span class="si">#{</span><span class="n">post</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">"</span> <span class="k">do</span>
+      <span class="n">erb</span> <span class="ss">:post</span>
+    <span class="k">end</span>
+
+    <span class="n">get</span> <span class="s2">"/posts/</span><span class="si">#{</span><span class="n">post</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">.json"</span> <span class="k">do</span>
+      <span class="n">post</span><span class="o">.</span><span class="n">to_json</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+<span class="k">end</span>
+
+
+<span class="no">App</span><span class="o">.</span><span class="n">build!</span><span class="p">(</span><span class="s2">"_site"</span><span class="p">)</span>
+</pre></div>
+
+<p>Or use with an existing Sinatra application:</p>
+
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">App</span> <span class="o">&lt;</span> <span class="ss">Sinatra</span><span class="p">:</span><span class="ss">:Base</span>
+  <span class="n">register</span> <span class="ss">Sinatra</span><span class="p">:</span><span class="ss">:AdvancedRoutes</span> <span class="c1"># this is required</span>
+
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">posts</span>
+    <span class="no">Post</span><span class="o">.</span><span class="n">all</span>
+  <span class="k">end</span>
+
+  <span class="n">posts</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
+    <span class="n">get</span> <span class="s2">"/posts/</span><span class="si">#{</span><span class="n">post</span><span class="o">[</span><span class="s1">'id'</span><span class="o">]</span><span class="si">}</span><span class="s2">.json"</span> <span class="k">do</span>
+      <span class="n">post</span><span class="o">.</span><span class="n">to_json</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="n">get</span> <span class="s2">"/"</span> <span class="k">do</span>
+    <span class="n">erb</span> <span class="ss">:index</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">builder</span> <span class="o">=</span> <span class="ss">Sharpie</span><span class="p">:</span><span class="ss">:Builder</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">App</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">build!</span><span class="p">(</span><span class="s2">"_site"</span><span class="p">)</span>
+</pre></div>
+
+<p><code>Sharpie::Base</code> subclasses from <code>Sinatra::Base</code>.</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Add this line to your application's Gemfile:</p>
+
+<div class="highlight"><pre><span class="n">gem</span> <span class="s1">'sharpie'</span>
+</pre></div>
+
+<p>And then execute:</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>bundle
+</pre></div>
+
+<p>Or install it yourself as:</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>gem install sharpie
+</pre></div>
+
+<h2>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol><h2>
+<a name="why" class="anchor" href="#why"><span class="octicon octicon-link"></span></a>Why</h2>
+
+<p>Sinatra routes make web app and API creation dead-simple. The syntax is straightforward and allows for your site to feel more like Ruby and less like a bloated framework. There's also no reason why this powerful API should be limited to dynamic web applications. Sinatra routes simply describe a path and a response. Whether the response is evaluated ahead of time or on-the-fly should not matter.</p>
+
+<h3>
+<a name="why-not-jekyll" class="anchor" href="#why-not-jekyll"><span class="octicon octicon-link"></span></a>Why not Jekyll?</h3>
+
+<p>Jekyll is great for blogs and other types of sites where content is "hand created." That is, a human creates a file in a folder and writes some Markdown. Sharpie is more geared towards use-cases where the original content is already in a machine-readable format. For example, if you have a database whose contents you want to expose via REST API. You also don't want to maintain a server and you don't want to worry about scaling. With Sharpie, you can write such an API with very few (yet straightforward) lines of code.</p>
+
+<h3>
+<a name="fork" class="anchor" href="#fork"><span class="octicon octicon-link"></span></a>Fork</h3>
+
+<p>This software is mostly a fork of the <a href="https://github.com/paulasmuth/sinatra-static">sinatra-static</a> gem by <a href="https://twitter.com/paulasmuth">Paul Asmuth</a>. Paul's code is very well-written. I'd rather copy and attribute it than re-invent a well-made wheel. I'm focusing on building an interface that suits my needs. More specifically, I want Sharpie to be part of a toolchain for rapidly developing static file-backed REST APIs.</p>
+
+<h1>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
+
+<p>This software, which is a fork of MIT-licensed software, is also MIT-licensed. See <code>LICENSE.txt</code>.</p>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/adelevie">adelevie</a> can be found on <a href="https://github.com/adelevie/sharpie">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>

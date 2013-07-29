@@ -1,9 +1,4 @@
-[![Gem Version](https://badge.fury.io/rb/sharpie.png)](http://badge.fury.io/rb/sharpie)
-
-[![Code Climate](https://codeclimate.com/github/adelevie/sharpie.png)](https://codeclimate.com/github/adelevie/sharpie)
-
-[![Build Status](https://travis-ci.org/adelevie/sharpie.png)](https://travis-ci.org/adelevie/sharpie)
-
+[![Gem Version](https://badge.fury.io/rb/sharpie.png)](http://badge.fury.io/rb/sharpie) [![Code Climate](https://codeclimate.com/github/adelevie/sharpie.png)](https://codeclimate.com/github/adelevie/sharpie) [![Build Status](https://travis-ci.org/adelevie/sharpie.png)](https://travis-ci.org/adelevie/sharpie)
 
 # Sharpie
 

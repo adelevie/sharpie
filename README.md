@@ -20,7 +20,7 @@ class App < Sharpie::Base
 
   posts.each do |post|
     get "/posts/#{post.id}" do
-      erb :post
+      erb :post, :locals => {:post => post}
     end
 
     get "/posts/#{post.id}.json" do
